@@ -1,34 +1,34 @@
 import * as React from 'react';
+import { css, keyframes } from '../../../../stitches.config';
 import { Label as LabelPrimitive } from '@radix-ui/react-label';
-import { RadioGroup, RadioGroupItem, RadioGroupIndicator } from './RadioGroup';
-import { css } from '../../../../stitches.config';
 import { RECOMMENDED_CSS__LABEL__ROOT } from '../../label/src/Label.stories';
+import * as RadioGroup from './RadioGroup';
 
 export default { title: 'Components/RadioGroup' };
 
 export const Styled = () => (
   <Label>
     Favourite pet
-    <RadioGroup className={rootClass} defaultValue="1">
+    <RadioGroup.Root className={rootClass()} defaultValue="1">
       <Label>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Cat
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Dog
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Rabbit
       </Label>
-    </RadioGroup>
+    </RadioGroup.Root>
   </Label>
 );
 
@@ -36,43 +36,43 @@ export const Controlled = () => {
   const [value, setValue] = React.useState('2');
 
   return (
-    <RadioGroup className={rootClass} value={value} onValueChange={setValue}>
-      <RadioGroupItem className={itemClass} value="1">
-        <RadioGroupIndicator className={indicatorClass} />
-      </RadioGroupItem>
-      <RadioGroupItem className={itemClass} value="2">
-        <RadioGroupIndicator className={indicatorClass} />
-      </RadioGroupItem>
-      <RadioGroupItem className={itemClass} value="3">
-        <RadioGroupIndicator className={indicatorClass} />
-      </RadioGroupItem>
-    </RadioGroup>
+    <RadioGroup.Root className={rootClass()} value={value} onValueChange={setValue}>
+      <RadioGroup.Item className={itemClass()} value="1">
+        <RadioGroup.Indicator className={indicatorClass()} />
+      </RadioGroup.Item>
+      <RadioGroup.Item className={itemClass()} value="2">
+        <RadioGroup.Indicator className={indicatorClass()} />
+      </RadioGroup.Item>
+      <RadioGroup.Item className={itemClass()} value="3">
+        <RadioGroup.Indicator className={indicatorClass()} />
+      </RadioGroup.Item>
+    </RadioGroup.Root>
   );
 };
 
 export const Unset = () => (
   <Label>
     Favourite pet
-    <RadioGroup className={rootClass}>
+    <RadioGroup.Root className={rootClass()}>
       <Label>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Cat
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="2" disabled>
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="2" disabled>
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Dog
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
         Rabbit
       </Label>
-    </RadioGroup>
+    </RadioGroup.Root>
   </Label>
 );
 
@@ -89,17 +89,17 @@ export const WithinForm = () => {
     >
       <fieldset>
         <legend>optional value: {data.optional}</legend>
-        <RadioGroup className={rootClass} name="optional">
-          <RadioGroupItem className={itemClass} value="1">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem className={itemClass} value="2">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem className={itemClass} value="3">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-        </RadioGroup>
+        <RadioGroup.Root className={rootClass()} name="optional">
+          <RadioGroup.Item className={itemClass()} value="1">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item className={itemClass()} value="2">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item className={itemClass()} value="3">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+        </RadioGroup.Root>
       </fieldset>
 
       <br />
@@ -107,17 +107,17 @@ export const WithinForm = () => {
 
       <fieldset>
         <legend>required value: {data.required}</legend>
-        <RadioGroup className={rootClass} name="required" required>
-          <RadioGroupItem className={itemClass} value="1">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem className={itemClass} value="2">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem className={itemClass} value="3">
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-        </RadioGroup>
+        <RadioGroup.Root className={rootClass()} name="required" required>
+          <RadioGroup.Item className={itemClass()} value="1">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item className={itemClass()} value="2">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item className={itemClass()} value="3">
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+        </RadioGroup.Root>
       </fieldset>
 
       <br />
@@ -125,29 +125,29 @@ export const WithinForm = () => {
 
       <fieldset>
         <legend>stop propagation value: {data.stopprop}</legend>
-        <RadioGroup className={rootClass} name="stopprop">
-          <RadioGroupItem
-            className={itemClass}
+        <RadioGroup.Root className={rootClass()} name="stopprop">
+          <RadioGroup.Item
+            className={itemClass()}
             value="1"
             onClick={(event) => event.stopPropagation()}
           >
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem
-            className={itemClass}
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item
+            className={itemClass()}
             value="2"
             onClick={(event) => event.stopPropagation()}
           >
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-          <RadioGroupItem
-            className={itemClass}
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+          <RadioGroup.Item
+            className={itemClass()}
             value="3"
             onClick={(event) => event.stopPropagation()}
           >
-            <RadioGroupIndicator className={indicatorClass} />
-          </RadioGroupItem>
-        </RadioGroup>
+            <RadioGroup.Indicator className={indicatorClass()} />
+          </RadioGroup.Item>
+        </RadioGroup.Root>
       </fieldset>
 
       <br />
@@ -161,31 +161,31 @@ export const WithinForm = () => {
 export const Animated = () => (
   <Label>
     Favourite pet
-    <RadioGroup className={rootClass} defaultValue="1">
+    <RadioGroup.Root className={rootClass()} defaultValue="1">
       <Label>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={animatedIndicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={animatedIndicatorClass()} />
+        </RadioGroup.Item>
         Cat
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={animatedIndicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={animatedIndicatorClass()} />
+        </RadioGroup.Item>
         Dog
       </Label>{' '}
       <Label>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={animatedIndicatorClass} />
-        </RadioGroupItem>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={animatedIndicatorClass()} />
+        </RadioGroup.Item>
         Rabbit
       </Label>
-    </RadioGroup>
+    </RadioGroup.Root>
   </Label>
 );
 
 export const Chromatic = () => {
-  const manualFocusRef = React.useRef<React.ElementRef<typeof RadioGroupItem>>(null);
+  const manualFocusRef = React.useRef<React.ElementRef<typeof RadioGroup.Item>>(null);
 
   React.useEffect(() => {
     manualFocusRef.current?.focus();
@@ -195,135 +195,135 @@ export const Chromatic = () => {
     <>
       <h1>Uncontrolled</h1>
       <h2>Unset</h2>
-      <RadioGroup className={rootClass}>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()}>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h2>Set</h2>
-      <RadioGroup className={rootClass} defaultValue="3">
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()} defaultValue="3">
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h1>Controlled</h1>
       <h2>Unset</h2>
-      <RadioGroup className={rootClass} value="">
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()} value="">
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h2>Set</h2>
-      <RadioGroup className={rootClass} value="3">
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()} value="3">
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h1>Disabled</h1>
-      <RadioGroup className={rootClass}>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2" disabled>
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()}>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2" disabled>
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h1>Manual focus into group</h1>
-      <RadioGroup className={rootClass}>
-        <RadioGroupItem className={itemClass} value="1" ref={manualFocusRef}>
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()}>
+        <RadioGroup.Item className={itemClass()} value="1" ref={manualFocusRef}>
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h1>Force mounted indicator</h1>
-      <RadioGroup className={rootClass}>
-        <RadioGroupItem className={itemClass} value="1">
-          <RadioGroupIndicator className={indicatorClass} forceMount />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="2">
-          <RadioGroupIndicator className={indicatorClass} forceMount />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemClass} value="3">
-          <RadioGroupIndicator className={indicatorClass} forceMount />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootClass()}>
+        <RadioGroup.Item className={itemClass()} value="1">
+          <RadioGroup.Indicator className={indicatorClass()} forceMount />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="2">
+          <RadioGroup.Indicator className={indicatorClass()} forceMount />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemClass()} value="3">
+          <RadioGroup.Indicator className={indicatorClass()} forceMount />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h1>State attributes</h1>
       <h2>Default</h2>
-      <RadioGroup className={rootAttrClass} defaultValue="3">
-        <RadioGroupItem className={itemAttrClass} value="1">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="2">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="3">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootAttrClass()} defaultValue="3">
+        <RadioGroup.Item className={itemAttrClass()} value="1">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="2">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="3">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
       <h2>Disabled</h2>
-      <RadioGroup className={rootAttrClass} defaultValue="3">
-        <RadioGroupItem className={itemAttrClass} value="1">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="2" disabled>
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="3">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootAttrClass()} defaultValue="3">
+        <RadioGroup.Item className={itemAttrClass()} value="1">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="2" disabled>
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="3">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
 
-      <RadioGroup className={rootAttrClass} defaultValue="2">
-        <RadioGroupItem className={itemAttrClass} value="1">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="2" disabled>
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-        <RadioGroupItem className={itemAttrClass} value="3">
-          <RadioGroupIndicator className={indicatorAttrClass} />
-        </RadioGroupItem>
-      </RadioGroup>
+      <RadioGroup.Root className={rootAttrClass()} defaultValue="2">
+        <RadioGroup.Item className={itemAttrClass()} value="1">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="2" disabled>
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+        <RadioGroup.Item className={itemAttrClass()} value="3">
+          <RadioGroup.Indicator className={indicatorAttrClass()} />
+        </RadioGroup.Item>
+      </RadioGroup.Root>
     </>
   );
 };
@@ -369,12 +369,12 @@ const indicatorClass = css({
   borderRadius: 'inherit',
 });
 
-const fadeIn = css.keyframes({
+const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
 });
 
-const fadeOut = css.keyframes({
+const fadeOut = keyframes({
   from: { opacity: 1 },
   to: { opacity: 0 },
 });

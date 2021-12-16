@@ -4128,21 +4128,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stitches/core@npm:^0.0.3-canary.4":
-  version: 0.0.3-canary.4
-  resolution: "@stitches/core@npm:0.0.3-canary.4"
-  checksum: bdff6e34fc0e4cc76b45882c662830fd13a30a9914e0d191b3c9298586e8b855f770cd30a03df569230b91041e1f91e7090af6d8de71dd600404664bb1e16ac0
-  languageName: node
-  linkType: hard
-
-"@stitches/react@npm:0.0.3-canary.4":
-  version: 0.0.3-canary.4
-  resolution: "@stitches/react@npm:0.0.3-canary.4"
-  dependencies:
-    "@stitches/core": ^0.0.3-canary.4
-  peerDependencies:
-    react: ^16.13.1
-  checksum: 6527f0036febb9f2bdb8f4312ea60ed03ab6d303f5388d2f53b88ce6f3d0ae7ccc5495c3898054a79b2e8a3297ec119c1abcace5c2cd07d413d0f2e07f36932e
+"@stitches/core@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "@stitches/core@npm:1.2.6"
+  checksum: 558ce083c1e04f57025942d1821d3f2c6b6366c417d71959c51553747538e8945041e6befcf88c3b9e9ef07eefdabb36c301fbdde2f1d3833c992ca4049d8b1b
   languageName: node
   linkType: hard
 
@@ -17000,7 +16989,7 @@ fsevents@~2.1.2:
     "@babel/template": ^7.12.13
     "@parcel/babel-plugin-transform-runtime": ^2.0.0-nightly.1823
     "@parcel/babel-preset-env": ^2.0.0-alpha.3
-    "@stitches/react": 0.0.3-canary.4
+    "@stitches/core": ^1.2.6
     "@storybook/addon-storysource": 6.1.0-beta.4
     "@storybook/react": 6.1.0-beta.4
     "@testing-library/cypress": ^7.0.6

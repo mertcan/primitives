@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ScrollArea from './ScrollArea';
 import { css } from '../../../../stitches.config';
+import * as ScrollArea from './ScrollArea';
 
 export default { title: 'Components/ScrollArea' };
 
@@ -357,21 +357,21 @@ ChromaticDynamicContentAfterLoaded.parameters = {
 const ScrollAreaStory = ({ children, vertical = true, horizontal = true, ...props }: any) => (
   <ScrollArea.Root
     {...props}
-    className={scrollAreaClass}
+    className={scrollAreaClass()}
     style={{ width: 200, height: 200, ...props.style }}
   >
-    <ScrollArea.Viewport className={scrollAreaViewportClass}>{children}</ScrollArea.Viewport>
+    <ScrollArea.Viewport className={scrollAreaViewportClass()}>{children}</ScrollArea.Viewport>
     {vertical && (
-      <ScrollArea.Scrollbar className={scrollbarClass} orientation="vertical">
-        <ScrollArea.Thumb className={thumbClass} />
+      <ScrollArea.Scrollbar className={scrollbarClass()} orientation="vertical">
+        <ScrollArea.Thumb className={thumbClass()} />
       </ScrollArea.Scrollbar>
     )}
     {horizontal && (
-      <ScrollArea.Scrollbar className={scrollbarClass} orientation="horizontal">
-        <ScrollArea.Thumb className={thumbClass} />
+      <ScrollArea.Scrollbar className={scrollbarClass()} orientation="horizontal">
+        <ScrollArea.Thumb className={thumbClass()} />
       </ScrollArea.Scrollbar>
     )}
-    <ScrollArea.Corner className={cornerClass} />
+    <ScrollArea.Corner className={cornerClass()} />
   </ScrollArea.Root>
 );
 

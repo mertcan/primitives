@@ -281,7 +281,7 @@ const rootClass = css({
   '&:focus': {
     outline: 'none',
     borderColor: '$red',
-    boxShadow: '0 0 0 1px $red',
+    boxShadow: '0 0 0 1px $colors$red',
   },
 
   '&[data-disabled]': {

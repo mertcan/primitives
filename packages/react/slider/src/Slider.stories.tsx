@@ -429,7 +429,7 @@ const thumbClass = css({
   backgroundColor: '$black',
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 2px $red',
+    boxShadow: '0 0 0 2px $colors$red',
   },
 });
 

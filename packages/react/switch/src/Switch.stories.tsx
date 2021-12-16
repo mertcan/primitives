@@ -169,7 +169,7 @@ const rootClass = css({
 
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 2px $black',
+    boxShadow: '0 0 0 2px $colors$black',
   },
 
   '&[data-state="checked"]': {

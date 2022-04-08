@@ -4,8 +4,6 @@ import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContextScope } from '@radix-ui/react-context';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { useEscapeKeydown } from '@radix-ui/react-use-escape-keydown';
-import { usePrevious } from '@radix-ui/react-use-previous';
-import { useRect } from '@radix-ui/react-use-rect';
 import { Presence } from '@radix-ui/react-presence';
 import { Primitive } from '@radix-ui/react-primitive';
 import * as PopperPrimitive from '@radix-ui/react-popper';
@@ -331,15 +329,27 @@ const TooltipContentImpl = React.forwardRef<TooltipContentImplElement, TooltipCo
 
     useEscapeKeydown(() => onClose());
 
+    // Close this tooltip if another one opens
     React.useEffect(() => {
-      // Close this tooltip if another one opens
       document.addEventListener(TOOLTIP_OPEN, onClose);
       return () => document.removeEventListener(TOOLTIP_OPEN, onClose);
     }, [onClose]);
 
+    // Close the tooltip if the trigger is scrolled
+    const { trigger } = context;
+    React.useEffect(() => {
+      if (trigger) {
+        const handleScroll = (event: Event) => {
+          const target = event.target as HTMLElement;
+          if (target?.contains(trigger)) onClose();
+        };
+        window.addEventListener('scroll', handleScroll, { capture: true });
+        return () => window.removeEventListener('scroll', handleScroll, { capture: true });
+      }
+    }, [trigger, onClose]);
+
     return (
       <PortalWrapper>
-        <CheckTriggerMoved __scopeTooltip={__scopeTooltip} />
         <PopperPrimitive.Content
           data-state={context.stateAttribute}
           {...popperScope}
@@ -385,31 +395,6 @@ const TooltipArrow = React.forwardRef<TooltipArrowElement, TooltipArrowProps>(
 TooltipArrow.displayName = ARROW_NAME;
 
 /* -----------------------------------------------------------------------------------------------*/
-
-function CheckTriggerMoved(props: ScopedProps<{}>) {
-  const { __scopeTooltip } = props;
-  const context = useTooltipContext('CheckTriggerMoved', __scopeTooltip);
-
-  const triggerRect = useRect(context.trigger);
-  const triggerLeft = triggerRect?.left;
-  const previousTriggerLeft = usePrevious(triggerLeft);
-  const triggerTop = triggerRect?.top;
-  const previousTriggerTop = usePrevious(triggerTop);
-  const handleClose = context.onClose;
-
-  React.useEffect(() => {
-    // checking if the user has scrolled…
-    const hasTriggerMoved =
-      (previousTriggerLeft !== undefined && previousTriggerLeft !== triggerLeft) ||
-      (previousTriggerTop !== undefined && previousTriggerTop !== triggerTop);
-
-    if (hasTriggerMoved) {
-      handleClose();
-    }
-  }, [handleClose, previousTriggerLeft, previousTriggerTop, triggerLeft, triggerTop]);
-
-  return null;
-}
 
 const Provider = TooltipProvider;
 const Root = Tooltip;
